@@ -1,0 +1,85 @@
+---- roles テーブルの初期データ（3件）
+--INSERT INTO roles (id, name) VALUES
+--    (1, 'ROLE_ADMIN'),
+--    (2, 'ROLE_SHOP'),
+--    (3, 'ROLE_COMPANY');
+--
+---- members テーブルのデータ（26件: admin 2件, shop 12件, company 12件）
+--INSERT INTO members (id, username, email, password, type, created_at, updated_at) VALUES
+--    (1, 'admin1', 'admin1@example.com', 'password1', 'admin', NOW(), NOW()),
+--    (2, 'admin2', 'admin2@example.com', 'password2', 'admin', NOW(), NOW()),
+--    (3, 'shop1', 'shop1@example.com', 'password3', 'shop', NOW(), NOW()),
+--    (4, 'shop2', 'shop2@example.com', 'password4', 'shop', NOW(), NOW()),
+--    (5, 'shop3', 'shop3@example.com', 'password5', 'shop', NOW(), NOW()),
+--    (6, 'shop4', 'shop4@example.com', 'password6', 'shop', NOW(), NOW()),
+--    (7, 'shop5', 'shop5@example.com', 'password7', 'shop', NOW(), NOW()),
+--    (8, 'shop6', 'shop6@example.com', 'password8', 'shop', NOW(), NOW()),
+--    (9, 'shop7', 'shop7@example.com', 'password9', 'shop', NOW(), NOW()),
+--    (10, 'shop8', 'shop8@example.com', 'password10', 'shop', NOW(), NOW()),
+--    (11, 'shop9', 'shop9@example.com', 'password11', 'shop', NOW(), NOW()),
+--    (12, 'shop10', 'shop10@example.com', 'password12', 'shop', NOW(), NOW()),
+--    (13, 'shop11', 'shop11@example.com', 'password13', 'shop', NOW(), NOW()),
+--    (14, 'shop12', 'shop12@example.com', 'password14', 'shop', NOW(), NOW()),
+--    (15, 'company1', 'company1@example.com', 'password15', 'company', NOW(), NOW()),
+--    (16, 'company2', 'company2@example.com', 'password16', 'company', NOW(), NOW()),
+--    (17, 'company3', 'company3@example.com', 'password17', 'company', NOW(), NOW()),
+--    (18, 'company4', 'company4@example.com', 'password18', 'company', NOW(), NOW()),
+--    (19, 'company5', 'company5@example.com', 'password19', 'company', NOW(), NOW()),
+--    (20, 'company6', 'company6@example.com', 'password20', 'company', NOW(), NOW()),
+--    (21, 'company7', 'company7@example.com', 'password21', 'company', NOW(), NOW()),
+--    (22, 'company8', 'company8@example.com', 'password22', 'company', NOW(), NOW()),
+--    (23, 'company9', 'company9@example.com', 'password23', 'company', NOW(), NOW()),
+--    (24, 'company10', 'company10@example.com', 'password24', 'company', NOW(), NOW()),
+--    (25, 'company11', 'company11@example.com', 'password25', 'company', NOW(), NOW()),
+--    (26, 'company12', 'company12@example.com', 'password26', 'company', NOW(), NOW());
+--
+---- shops テーブルのデータ（12件）
+--INSERT INTO shops (id, member_id, shop_name, address, category1, category2_1, category2_2, latitude, longitude, phone_number, website, created_at, updated_at) VALUES
+--    (1, 3, 'Shop A', '123 Main St', 'Food', 'Fast Food', 'Burgers', 35.6895, 139.6917, '123-456-7890', 'http://shopA.com', NOW(), NOW()),
+--    (2, 4, 'Shop B', '456 Side St', 'Retail', 'Clothing', 'Men', 34.0522, -118.2437, '098-765-4321', 'http://shopB.com', NOW(), NOW()),
+--    (3, 5, 'Shop C', '789 Corner Ave', 'Retail', 'Electronics', 'Phones', 51.5074, -0.1278, '456-123-7890', 'http://shopC.com', NOW(), NOW()),
+--    (4, 6, 'Shop D', '101 Busy Rd', 'Food', 'Cafe', NULL, 40.7128, -74.0060, '987-654-3210', 'http://shopD.com', NOW(), NOW()),
+--    (5, 7, 'Shop E', '202 Quiet St', 'Health', 'Pharmacy', NULL, 48.8566, 2.3522, '321-654-9870', 'http://shopE.com', NOW(), NOW()),
+--    (6, 8, 'Shop F', '303 Wide Blvd', 'Food', 'Restaurant', 'Sushi', 35.6895, 139.6917, '234-567-8901', 'http://shopF.com', NOW(), NOW()),
+--    (7, 9, 'Shop G', '404 Narrow Ln', 'Retail', 'Books', NULL, 34.0522, -118.2437, '567-890-1234', 'http://shopG.com', NOW(), NOW()),
+--    (8, 10, 'Shop H', '505 Steep Rd', 'Retail', 'Clothing', 'Women', 51.5074, -0.1278, '890-123-4567', 'http://shopH.com', NOW(), NOW()),
+--    (9, 11, 'Shop I', '606 Small Ct', 'Health', 'Gym', NULL, 40.7128, -74.0060, '123-456-7890', 'http://shopI.com', NOW(), NOW()),
+--    (10, 12, 'Shop J', '707 Big St', 'Food', 'Bakery', NULL, 48.8566, 2.3522, '321-654-9870', 'http://shopJ.com', NOW(), NOW()),
+--    (11, 13, 'Shop K', '808 Green Ave', 'Retail', 'Electronics', 'Laptops', 35.6895, 139.6917, '234-567-8901', 'http://shopK.com', NOW(), NOW()),
+--    (12, 14, 'Shop L', '909 Blue Rd', 'Health', 'Clinic', NULL, 34.0522, -118.2437, '567-890-1234', 'http://shopL.com', NOW(), NOW());
+--
+---- companies テーブルのデータ（12件）
+--INSERT INTO companies (id, member_id, company_name, address, latitude, longitude, contact_email, phone_number, created_at, updated_at) VALUES
+--    (1, 15, 'Company A', '111 Enterprise Ave', 35.6895, 139.6917, 'contactA@company.com', '123-456-7890', NOW(), NOW()),
+--    (2, 16, 'Company B', '222 Startup Rd', 34.0522, -118.2437, 'contactB@company.com', '987-654-3210', NOW(), NOW()),
+--    (3, 17, 'Company C', '333 Industry Ln', 51.5074, -0.1278, 'contactC@company.com', '456-123-7890', NOW(), NOW()),
+--    (4, 18, 'Company D', '444 Business Ct', 40.7128, -74.0060, 'contactD@company.com', '789-012-3456', NOW(), NOW()),
+--    (5, 19, 'Company E', '555 Corporate Blvd', 48.8566, 2.3522, 'contactE@company.com', '234-567-8901', NOW(), NOW()),
+--    (6, 20, 'Company F', '666 Commerce St', 35.6895, 139.6917, 'contactF@company.com', '890-123-4567', NOW(), NOW()),
+--    (7, 21, 'Company G', '777 Trade Pl', 34.0522, -118.2437, 'contactG@company.com', '567-890-1234', NOW(), NOW()),
+--    (8, 22, 'Company H', '888 Global Dr', 51.5074, -0.1278, 'contactH@company.com', '123-456-7890', NOW(), NOW()),
+--    (9, 23, 'Company I', '999 Universal Ct', 40.7128, -74.0060, 'contactI@company.com', '321-654-9870', NOW(), NOW()),
+--    (10, 24, 'Company J', '1010 Planet Ln', 48.8566, 2.3522, 'contactJ@company.com', '234-567-8901', NOW(), NOW()),
+--    (11, 25, 'Company K', '1111 Sphere Rd', 35.6895, 139.6917, 'contactK@company.com', '890-123-4567', NOW(), NOW()),
+--    (12, 26, 'Company L', '1212 Galaxy St', 34.0522, -118.2437, 'contactL@company.com', '567-890-1234', NOW(), NOW());
+--
+---- posts テーブルのデータ（12件）
+--INSERT INTO posts (id, member_id, shop_id, content, image_url, created_at, updated_at) VALUES
+--    (1, 3, 1, 'Post content for Shop A', 'http://imageA.com/post1.jpg', NOW(), NOW()),
+--    (2, 4, 2, 'Post content for Shop B', 'http://imageB.com/post2.jpg', NOW(), NOW()),
+--    (3, 5, 3, 'Post content for Shop C', 'http://imageC.com/post3.jpg', NOW(), NOW()),
+--    (4, 6, 4, 'Post content for Shop D', 'http://imageD.com/post4.jpg', NOW(), NOW()),
+--    (5, 7, 5, 'Post content for Shop E', 'http://imageE.com/post5.jpg', NOW(), NOW()),
+--    (6, 8, 6, 'Post content for Shop F', 'http://imageF.com/post6.jpg', NOW(), NOW()),
+--    (7, 9, 7, 'Post content for Shop G', 'http://imageG.com/post7.jpg', NOW(), NOW()),
+--    (8, 10, 8, 'Post content for Shop H', 'http://imageH.com/post8.jpg', NOW(), NOW()),
+--    (9, 11, 9, 'Post content for Shop I', 'http://imageI.com/post9.jpg', NOW(), NOW()),
+--    (10, 12, 10, 'Post content for Shop J', 'http://imageJ.com/post10.jpg', NOW(), NOW()),
+--    (11, 13, 11, 'Post content for Shop K', 'http://imageK.com/post11.jpg', NOW(), NOW()),
+--    (12, 14, 12, 'Post content for Shop L', 'http://imageL.com/post12.jpg', NOW(), NOW());
+--
+---- member_roles テーブルのデータ（36件: 各メンバーに役割を割り当てる）
+--INSERT INTO member_roles (member_id, role_id) VALUES
+--    (1, 1), (2, 1), -- admin roles
+--    (3, 2), (4, 2), (5, 2), (6, 2), (7, 2), (8, 2), (9, 2), (10, 2), (11, 2), (12, 2), (13, 2), (14, 2), -- shop roles
+--    (15, 3), (16, 3), (17, 3), (18, 3), (19, 3), (20, 3), (21, 3), (22, 3), (23, 3), (24, 3), (25, 3), (26, 3); -- company roles

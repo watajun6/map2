@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shop List</title>
+</head>
+<body>
+    <h1>Shop List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>Shop Name</th>
+                <th>Address</th>
+                <th>Category</th>
+                <th>Phone</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="shop : ${shops}">
+                <td th:text="${shop.memberName}"></td>
+                <td th:text="${shop.shopName}"></td>
+                <td th:text="${shop.shopAddress}"></td>
+                <td th:text="${shop.category1}"></td>
+                <td th:text="${shop.phoneNumber}"></td>
+                <td><a th:href="${shop.website}" th:text="${shop.website}"></a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

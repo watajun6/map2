@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company List</title>
+</head>
+<body>
+    <h1>Companies List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Member Name</th>
+                <th>Company Name</th>
+                <th>Company Address</th>
+                <th>Contact Email</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="company : ${companies}">
+                <td th:text="${company.memberName}"></td>
+                <td th:text="${company.companyName}"></td>
+                <td th:text="${company.companyAddress}"></td>
+                <td th:text="${company.contactEmail}"></td>
+                <td th:text="${company.phoneNumber}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
