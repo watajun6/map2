@@ -1,7 +1,7 @@
 package com.example.ogumap.service;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.ogumap.dto.ShopMemberDTO;
@@ -16,7 +16,8 @@ public class ShopService {
         this.shopRepository = shopRepository;
     }
 
-    public List<ShopMemberDTO> getAllShopsWithMembers() {
-        return shopRepository.findAllShopMemberData();
+    // ページネーション対応メソッド
+    public Page<ShopMemberDTO> getAllShopsWithMembers(Pageable pageable) {
+        return shopRepository.findAllShopMemberData(pageable);
     }
 }

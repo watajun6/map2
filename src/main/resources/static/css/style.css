@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/* ページネーション全体のスタイル */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+/* 各ページアイテムのスタイル */
+.pagination .page-item {
+    margin: 0 0.25rem;
+}
+
+/* リンクスタイル */
+.pagination .page-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* リンクのホバー時のスタイル */
+.pagination .page-link:hover {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* アクティブページのスタイル */
+.pagination .active .page-link {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    cursor: default;
+}
+
+/* 無効化されたリンクのスタイル */
+.pagination .disabled .page-link {
+    color: #6c757d;
+    background-color: #fff;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .pagination .page-link {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.875rem;
+    }
+}

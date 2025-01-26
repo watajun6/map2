@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Shop List</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Shop List</h1>
+    <h1>Shop 一覧</h1>
     <table>
         <thead>
             <tr>
@@ -17,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="shop : ${shops}">
+            <tr th:each="shop : ${shopsPage}">
                 <td th:text="${shop.memberName}"></td>
                 <td th:text="${shop.shopName}"></td>
                 <td th:text="${shop.shopAddress}"></td>
@@ -27,5 +28,33 @@
             </tr>
         </tbody>
     </table>
+    
+    <!-- ページ数が1ページ以上の場合にのみページネーションを表示 -->
+    <div th:if="${shopsPage.getTotalPages() > 1}" class="d-flex justify-content-center">
+		
+		<nav aria-label="Page navigation">
+		    <ul class="pagination">
+				<!-- 前のページボタン -->
+		        <li class="page-item　disabled" th:classappend="${shopsPage.hasPrevious()} ? '' : 'disabled'">
+		            <a class="page-link" th:href="@{/admin/shops(page=${shopsPage.number - 1})}" aria-label="Previous">
+		                <span aria-hidden="true">&laquo;</span>
+		            </a>
+		        </li>
+		        
+		        <!-- 各ページ番号 -->
+		        <li class="page-item　active" th:each="i : ${#numbers.sequence(0, shopsPage.totalPages - 1)}"
+		            th:classappend="${shopsPage.number == i} ? 'active'">
+		            <a class="page-link" th:href="@{/admin/shops(page=${i})}" th:text="${i + 1}"></a>
+		        </li>
+		        
+		        <!-- 次のページボタン -->
+		        <li class="page-item" th:classappend="${shopsPage.hasNext()} ? '' : 'disabled'">
+		            <a class="page-link" th:href="@{/admin/shops(page=${shopsPage.number + 1})}" aria-label="Next">
+		                <span aria-hidden="true">&raquo;</span>
+		            </a>
+		        </li>
+		    </ul>
+ 		</nav>
+ 	</div>
 </body>
 </html>
