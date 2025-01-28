@@ -16,8 +16,15 @@ public class ShopService {
         this.shopRepository = shopRepository;
     }
 
+    // 全ての店舗情報を取得
     // ページネーション対応メソッド
-    public Page<ShopMemberDTO> getAllShopsWithMembers(Pageable pageable) {
+    public Page<ShopMemberDTO> getAllShopWithMembers(Pageable pageable) {
         return shopRepository.findAllShopMemberData(pageable);
     }
+    
+    // 検索結果を取得
+    public Page<ShopMemberDTO> searchShopsWithMembers(String search, Pageable pageable) {
+        return shopRepository.findShopsBySearchQuery(search, pageable);
+    }
+
 }

@@ -17,7 +17,12 @@ public class CompanyService {
     }
 
     // ページネーション対応メソッド
-    public Page<CompanyMemberDTO> getAllCompaniesWithMembers(Pageable pageable) {
+    public Page<CompanyMemberDTO> getAllCompanyWithMembers(Pageable pageable) {
         return companyRepository.findAllCompanyMemberData(pageable);
+    }
+    
+    // 検索機能を実装
+    public Page<CompanyMemberDTO> searchCompaniesWithMembers(String search2, Pageable pageable) {
+        return companyRepository.findCompaniesBySearchQuery(search2, pageable);
     }
 }

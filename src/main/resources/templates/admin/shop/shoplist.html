@@ -5,7 +5,14 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Shop 一覧</h1>
+    <h1>ショップ 一覧</h1>
+    
+    <!-- 検索フォーム -->
+    <form th:action="@{/admin/shop}" method="get">
+        <input type="text" name="search" th:value="${search}" placeholder="店舗名、住所、ユーザー名で検索">
+        <button type="submit">検索</button>
+    </form>
+
     <table>
         <thead>
             <tr>
@@ -36,7 +43,7 @@
 		    <ul class="pagination">
 				<!-- 前のページボタン -->
 		        <li class="page-item　disabled" th:classappend="${shopsPage.hasPrevious()} ? '' : 'disabled'">
-		            <a class="page-link" th:href="@{/admin/shops(page=${shopsPage.number - 1})}" aria-label="Previous">
+		            <a class="page-link" th:href="@{/admin/shop(page=${shopsPage.number - 1})}" aria-label="Previous">
 		                <span aria-hidden="true">&laquo;</span>
 		            </a>
 		        </li>
@@ -44,12 +51,12 @@
 		        <!-- 各ページ番号 -->
 		        <li class="page-item　active" th:each="i : ${#numbers.sequence(0, shopsPage.totalPages - 1)}"
 		            th:classappend="${shopsPage.number == i} ? 'active'">
-		            <a class="page-link" th:href="@{/admin/shops(page=${i})}" th:text="${i + 1}"></a>
+		            <a class="page-link" th:href="@{/admin/shop(page=${i})}" th:text="${i + 1}"></a>
 		        </li>
 		        
 		        <!-- 次のページボタン -->
 		        <li class="page-item" th:classappend="${shopsPage.hasNext()} ? '' : 'disabled'">
-		            <a class="page-link" th:href="@{/admin/shops(page=${shopsPage.number + 1})}" aria-label="Next">
+		            <a class="page-link" th:href="@{/admin/shop(page=${shopsPage.number + 1})}" aria-label="Next">
 		                <span aria-hidden="true">&raquo;</span>
 		            </a>
 		        </li>

@@ -8,15 +8,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ogumap.dto.ShopMemberDTO;
 import com.example.ogumap.service.ShopService;
 
 @Controller
-@RequestMapping("/admin/shops")
+@RequestMapping("/admin/shop")
 public class AdminHomeShopController {
 
-    private ShopService shopService = null;
+	private final ShopService shopService;
 
     public AdminHomeShopController(ShopService shopService) {
         this.shopService = shopService;
@@ -27,9 +28,19 @@ public class AdminHomeShopController {
 //    sort：並べ替える対象（デフォルトはなし）
 //    direction：並べ替える順番（デフォルトはDirection.ASC）
     @GetMapping
-    public String listShops(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
-    	Page<ShopMemberDTO> shopsPage = shopService.getAllShopsWithMembers(pageable);
+    public String listShops(
+    		Model model,
+    		@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
+    		@RequestParam(value = "search", required = false) String search // 検索条件
+    		) {
+    	Page<ShopMemberDTO> shopsPage;
+    	if (search != null && !search.isEmpty()) {
+            shopsPage = shopService.searchShopsWithMembers(search, pageable);
+        } else {
+            shopsPage = shopService.getAllShopWithMembers(pageable);
+        }
         model.addAttribute("shopsPage", shopsPage);
-        return "admin/shop/index";
+        model.addAttribute("search", search); // 検索条件をテンプレートに渡す
+        return "admin/shop/shoplist";
     }
 }
