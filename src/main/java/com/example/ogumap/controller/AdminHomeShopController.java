@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,5 +43,13 @@ public class AdminHomeShopController {
         model.addAttribute("shopsPage", shopsPage);
         model.addAttribute("search", search); // 検索条件をテンプレートに渡す
         return "admin/shop/shoplist";
+    }
+    
+    // ショップ詳細表示
+    @GetMapping("/show/{shopId}")
+    public String shopShow(@PathVariable("shopId") Long shopId, Model model) {
+        ShopMemberDTO shopDetail = shopService.getShopDetail(shopId);
+        model.addAttribute("shopDetail", shopDetail);
+        return "admin/shop/show";
     }
 }

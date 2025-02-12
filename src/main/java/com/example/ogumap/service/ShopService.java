@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.ogumap.dto.ShopMemberDTO;
 import com.example.ogumap.repository.ShopRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ShopService {
 
@@ -26,5 +28,9 @@ public class ShopService {
     public Page<ShopMemberDTO> searchShopsWithMembers(String search, Pageable pageable) {
         return shopRepository.findShopsBySearchQuery(search, pageable);
     }
-
+    // ショップ詳細情報取得
+    public ShopMemberDTO getShopDetail(Long shopId) {
+        return shopRepository.findShopMemberDTOById(shopId)
+                .orElseThrow(() -> new EntityNotFoundException("Shop not found for id: " + shopId));
+    }
 }
