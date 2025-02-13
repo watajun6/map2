@@ -3,6 +3,43 @@
 <head>
     <title>Company List</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .pagination {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        .pagination li {
+            margin-right: 5px;
+        }
+        .pagination .active a {
+            font-weight: bold;
+        }
+        .disabled a {
+            pointer-events: none;
+            color: #999;
+        }
+    </style>
 </head>
 <body>
     <h1>会社 一覧</h1>
@@ -26,6 +63,11 @@
         <tbody>
             <tr th:each="company : ${companiesPage}">
                 <td th:text="${company.memberName}"></td>
+                <td>
+                    <!-- 会社名をクリックすると詳細画面（/admin/company/show/{companyId}）へ遷移 -->
+                    <a th:href="@{'/admin/company/show/' + ${company.companyId}}"
+                       th:text="${company.companyName}"></a>
+                </td>
                 <td th:text="${company.companyName}"></td>
                 <td th:text="${company.companyAddress}"></td>
                 <td th:text="${company.contactEmail}"></td>

@@ -18,7 +18,7 @@ public interface ShopRepository extends JpaRepository<Shop, Long> {
            "FROM Shop s JOIN s.member m")
     Page<ShopMemberDTO> findAllShopMemberData(Pageable pageable); // ページネーション対応
     
- // 検索クエリ対応
+    // 検索クエリ対応
     @Query("SELECT new com.example.ogumap.dto.ShopMemberDTO(m.id, m.username, m.email, s.id, s.shopName, s.address, s.category1, s.category2_1, s.category2_2, s.latitude, s.longitude, s.phoneNumber, s.website) " +
            "FROM Shop s JOIN s.member m " +
            "WHERE LOWER(s.shopName) LIKE LOWER(CONCAT('%', :search, '%')) " +
@@ -26,7 +26,7 @@ public interface ShopRepository extends JpaRepository<Shop, Long> {
            "   OR LOWER(m.username) LIKE LOWER(CONCAT('%', :search, '%'))")
     Page<ShopMemberDTO> findShopsBySearchQuery(String search, Pageable pageable);
     
-    // 新規追加：ショップ詳細取得用クエリ
+    // ショップ詳細取得用クエリ
     @Query("SELECT new com.example.ogumap.dto.ShopMemberDTO(m.id, m.username, m.email, s.id, s.shopName, s.address, s.category1, s.category2_1, s.category2_2, s.latitude, s.longitude, s.phoneNumber, s.website) " +
            "FROM Shop s JOIN s.member m " +
            "WHERE s.id = :shopId")

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import com.example.ogumap.dto.CompanyMemberDTO;
 import com.example.ogumap.repository.CompanyRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class CompanyService {
 
@@ -25,4 +27,10 @@ public class CompanyService {
     public Page<CompanyMemberDTO> searchCompaniesWithMembers(String search2, Pageable pageable) {
         return companyRepository.findCompaniesBySearchQuery(search2, pageable);
     }
-}
+
+    // 企業詳細情報取得
+    public CompanyMemberDTO getCompanyDetail(Long companyId) {
+        return companyRepository.findCompanyMemberDTOById(companyId)
+                .orElseThrow(() -> new EntityNotFoundException("Company not found for id: " + companyId));
+        }
+    }

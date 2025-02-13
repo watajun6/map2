@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>企業詳細ページ</title>
+    <meta charset="UTF-8">
+    <title>会社詳細ページ</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .detail-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .detail-section p {
+            margin: 10px 0;
+        }
+        .detail-section strong {
+            display: inline-block;
+            width: 150px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
+    <h1>会社詳細情報</h1>
+    
+    <!-- 会員情報 -->
+    <div class="detail-section">
+        <h2>会員情報</h2>
+        <p><strong>会員ID:</strong> <span th:text="${companyDetail.memberId}"></span></p>
+        <p><strong>ユーザー名:</strong> <span th:text="${companyDetail.memberName}"></span></p>
+        <p><strong>メールアドレス:</strong> <span th:text="${companyDetail.memberEmail}"></span></p>
+    </div>
+    
+    <!-- 企業情報 -->
+    <div class="detail-section">
+        <h2>会社情報</h2>
+        <p><strong>ID:</strong> <span th:text="${companyDetail.companyId}"></span></p>
+        <p><strong>会社名:</strong> <span th:text="${companyDetail.companyName}"></span></p>
+        <p><strong>住所:</strong> <span th:text="${companyDetail.companyAddress}"></span></p>
+        <p><strong>連絡用メール:</strong> <span th:text="${companyDetail.contactEmail}"></span></p>
+        <p><strong>電話番号:</strong> <span th:text="${companyDetail.phoneNumber}"></span></p>
+        <p><strong>緯度:</strong> <span th:text="${companyDetail.latitude}"></span></p>
+        <p><strong>経度:</strong> <span th:text="${companyDetail.longitude}"></span></p>
+    </div>
+    
+    <!-- 戻るリンク -->
+    <div>
+        <a th:href="@{/admin/company}">会社一覧へ戻る</a>
+    </div>
 </body>
 </html>
