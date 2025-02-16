@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>会社詳細ページ</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+    <head>
+	<title>会社詳細ページ</title>
+	
+	<th:block th:replace="~{fragment/fragment :: meta}"></th:block>
+	
+	<!-- Google Fonts -->
+    <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
+    
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,6 +42,9 @@
     </style>
 </head>
 <body>
+	<!-- ヘッダー -->
+	<div th:replace="~{fragment/fragment :: header}"></div>
+	
     <h1>会社詳細情報</h1>
     
     <!-- 会員情報 -->
@@ -61,5 +71,11 @@
     <div>
         <a th:href="@{/admin/company}">会社一覧へ戻る</a>
     </div>
+    
+    <!-- フッター -->
+    <div th:replace="~{fragment/fragment :: footer}"></div>
+    
+    <!-- Bootstrap -->
+    <div th:replace="~{fragment/fragment :: scripts}"></div>
 </body>
 </html>

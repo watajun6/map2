@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Shop List</title>
+    <title>ショップ一覧</title>
+    
+    <th:block th:replace="~{fragment/fragment :: meta}"></th:block>
+	
+	<!-- Google Fonts -->
+    <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
+
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>
     /* 必要に応じたスタイルを記述 */
@@ -43,6 +49,9 @@
   </style>
 </head>
 <body>
+	<!-- ヘッダー -->
+	<div th:replace="~{fragment/fragment :: header}"></div>
+	
     <h1>ショップ 一覧</h1>
     
     <!-- 検索フォーム -->
@@ -105,9 +114,15 @@
         </nav>
     </div>
     
-      <!-- 戻るボタン -->
+      <!-- 戻るボタン 
   <div>
     <a th:href="@{/admin/shop}">ショップ一覧へ戻る</a>
-  </div>
+  </div>　-->
+  
+  <!-- フッター -->
+    <div th:replace="~{fragment/fragment :: footer}"></div>
+    
+    <!-- Bootstrap -->
+    <div th:replace="~{fragment/fragment :: scripts}"></div>
 </body>
 </html>
