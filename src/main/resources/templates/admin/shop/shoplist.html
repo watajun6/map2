@@ -4,125 +4,102 @@
     <title>ショップ一覧</title>
     
     <th:block th:replace="~{fragment/fragment :: meta}"></th:block>
-	
-	<!-- Google Fonts -->
+    
     <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
-
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <style>
-    /* 必要に応じたスタイルを記述 */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      color: #333;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-    .pagination {
-      margin-top: 20px;
-      list-style: none;
-      padding: 0;
-      display: flex;
-    }
-    .pagination li {
-      margin-right: 5px;
-    }
-    .pagination .active a {
-      font-weight: bold;
-    }
-    .disabled a {
-      pointer-events: none;
-      color: #999;
-    }
-  </style>
 </head>
 <body>
+	<div class="wrapper">
+		
 	<!-- ヘッダー -->
 	<div th:replace="~{fragment/fragment :: header}"></div>
 	
-    <h1>ショップ 一覧</h1>
+	<main>
+		<div class="container pt-4 pb-5 container">
+		    <div class="row justify-content-center">
+		    	<div class="col-xxl-9 col-xl-10 col-lg-11">
+					
+				    <h1 class="mb-4 text-center">ショップ 一覧</h1>
+				    
+				    <!-- 検索フォーム -->
+				    <form method="get" class="w-100 mb-3" th:action="@{/admin/shop}">
+						<div class="input-group">
+					        <input type="text" class="form-control search-input" name="search" th:value="${search}" placeholder="店舗名、住所、カテゴリで検索">
+					        <button type="submit" class="btn text-white shadow-sm search-btn">検索</button>
+						</div>
+				    </form>
+				
+					<!-- 一覧表示 -->
+					<table class="table">
+						<thead>
+							<tr>
+						        <th scope="col">店舗名</th>
+						        <th scope="col">住所</th>
+						        <th scope="col">カテゴリ</th>
+						        <th scope="col"></th>
+						    </tr>
+						</thead>
+						<tbody>
+							<tr th:each="shop : ${shopsPage}">
+							    <td th:text="${shop.shopName}"></td>
+							    <td th:text="${shop.shopAddress}"></td>
+							    <td th:text="${shop.category1}"></td>
+							    <td><a th:href="@{'/admin/shop/show/' + ${shop.shopId}}">詳細</a></td> 
+							</tr>
+				           <!-- <tr th:each="shop : ${shopsPage}">
+				                <td th:text="${shop.memberId}"></td>
+				                <td>
+				                    shopNameをクリックすると /admin/shop/show/{shopId} へ遷移 
+				                    <a th:href="@{'/admin/shop/show/' + ${shop.shopId}}"
+				                       th:text="${shop.shopName}"></a>
+				                </td>
+				                <td th:text="${shop.shopAddress}"></td>
+				                <td th:text="${shop.category1}"></td>
+				                <td th:text="${shop.phoneNumber}"></td>
+				                <td>
+				                    <a th:href="${shop.website}" th:text="${shop.website}" target="_blank"></a>
+				                </td>
+				            </tr> -->
+				    	    </tbody>
+				    </table>
+				</div>
+			</div>
+				    
+				    <!-- ページ数が1ページ以上の場合にのみページネーションを表示 -->
+				    <div th:if="${shopsPage.getTotalPages() > 1}" class="d-flex justify-content-center">
+				        <nav aria-label="Page navigation">
+				            <ul class="pagination">
+				                <!-- 前のページボタン -->
+				                <li class="page-item" th:classappend="${shopsPage.hasPrevious()} ? '' : 'disabled'">
+				                    <a class="page-link" th:href="@{/admin/shop(page=${shopsPage.number - 1})}" aria-label="Previous">
+				                        <span aria-hidden="true">&laquo;</span>
+				                    </a>
+				                </li>
+				                <!-- 各ページ番号 -->
+				                <li class="page-item" th:each="i : ${#numbers.sequence(0, shopsPage.totalPages - 1)}"
+				                    th:classappend="${shopsPage.number == i} ? 'active'">
+				                    <a class="page-link" th:href="@{/admin/shop(page=${i})}" th:text="${i + 1}"></a>
+				                </li>
+				                <!-- 次のページボタン -->
+				                <li class="page-item" th:classappend="${shopsPage.hasNext()} ? '' : 'disabled'">
+				                    <a class="page-link" th:href="@{/admin/shop(page=${shopsPage.number + 1})}" aria-label="Next">
+				                        <span aria-hidden="true">&raquo;</span>
+				                    </a>
+				                </li>
+				            </ul>
+				        </nav>
+				    </div>
+				    
+					<!-- 戻るボタン -->
+					<div>
+    					<a th:href="@{/adminhome}">管理画面へ戻る</a>
+  					</div>
+    		</div>
+	</main>
     
-    <!-- 検索フォーム -->
-    <form th:action="@{/admin/shop}" method="get">
-        <input type="text" name="search" th:value="${search}" placeholder="店舗名、住所、ユーザー名で検索">
-        <button type="submit">検索</button>
-    </form>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Member Name</th>
-                <th>Shop Name</th>
-                <th>Address</th>
-                <th>Category</th>
-                <th>Phone</th>
-                <th>Website</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="shop : ${shopsPage}">
-                <td th:text="${shop.memberId}"></td>
-                <td>
-                    <!-- shopNameをクリックすると /admin/shop/show/{shopId} へ遷移 -->
-                    <a th:href="@{'/admin/shop/show/' + ${shop.shopId}}"
-                       th:text="${shop.shopName}"></a>
-                </td>
-                <td th:text="${shop.shopAddress}"></td>
-                <td th:text="${shop.category1}"></td>
-                <td th:text="${shop.phoneNumber}"></td>
-                <td>
-                    <a th:href="${shop.website}" th:text="${shop.website}" target="_blank"></a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <!-- ページ数が1ページ以上の場合にのみページネーションを表示 -->
-    <div th:if="${shopsPage.getTotalPages() > 1}" class="d-flex justify-content-center">
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-                <!-- 前のページボタン -->
-                <li class="page-item" th:classappend="${shopsPage.hasPrevious()} ? '' : 'disabled'">
-                    <a class="page-link" th:href="@{/admin/shop(page=${shopsPage.number - 1})}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <!-- 各ページ番号 -->
-                <li class="page-item" th:each="i : ${#numbers.sequence(0, shopsPage.totalPages - 1)}"
-                    th:classappend="${shopsPage.number == i} ? 'active'">
-                    <a class="page-link" th:href="@{/admin/shop(page=${i})}" th:text="${i + 1}"></a>
-                </li>
-                <!-- 次のページボタン -->
-                <li class="page-item" th:classappend="${shopsPage.hasNext()} ? '' : 'disabled'">
-                    <a class="page-link" th:href="@{/admin/shop(page=${shopsPage.number + 1})}" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    
-      <!-- 戻るボタン 
-  <div>
-    <a th:href="@{/admin/shop}">ショップ一覧へ戻る</a>
-  </div>　-->
-  
   <!-- フッター -->
-    <div th:replace="~{fragment/fragment :: footer}"></div>
-    
-    <!-- Bootstrap -->
-    <div th:replace="~{fragment/fragment :: scripts}"></div>
+	<div th:replace="~{fragment/fragment :: footer}"></div>
+	</div>
+	<!-- Bootstrap -->
+	<div th:replace="~{fragment/fragment :: scripts}"></div>
 </body>
 </html>

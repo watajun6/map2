@@ -45,7 +45,7 @@ public class AdminHomeCompanyController {
         return "admin/company/companylist";
     }
     
-    // 企業詳細表示（例：/admin/company/show/{companyId}）
+    // 企業詳細表示（/admin/company/show/{companyId}）
     @GetMapping("/show/{companyId}")
     public String showCompany(@PathVariable("companyId") Long companyId, Model model) {
         CompanyMemberDTO companyDetail = companyService.getCompanyDetail(companyId);
