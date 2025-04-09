@@ -4,21 +4,11 @@
     <head>
 	<title>会社詳細ページ</title>
 	
-	<th:block th:replace="~{fragment/fragment :: meta}"></th:block>
-	
-	<!-- Google Fonts -->
-    <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
+    <th:block th:replace="~{fragment/fragment :: meta}"></th:block>
     
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
 	
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
         .detail-section {
             border: 1px solid #ccc;
             padding: 20px;
@@ -45,7 +35,12 @@
 	<!-- ヘッダー -->
 	<div th:replace="~{fragment/fragment :: header}"></div>
 	
-    <h1>会社詳細情報</h1>
+		<main>
+		<div class="container pt-4 pb-5 container">
+		    <div class="row justify-content-center">
+		    	<div class="col-xxl-9 col-xl-10 col-lg-11">
+	
+    <h1 class="mb-4 text-center">会社詳細情報</h1>
     
     <!-- 会員情報 -->
     <div class="detail-section">
@@ -71,6 +66,10 @@
     <div>
         <a th:href="@{/admin/company}">会社一覧へ戻る</a>
     </div>
+    
+    </div>
+    </div>
+    </main>
     
     <!-- フッター -->
     <div th:replace="~{fragment/fragment :: footer}"></div>

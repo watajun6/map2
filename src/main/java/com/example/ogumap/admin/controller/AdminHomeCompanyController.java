@@ -1,4 +1,4 @@
-package com.example.ogumap.controller;
+package com.example.ogumap.admin.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.ogumap.dto.CompanyMemberDTO;
-import com.example.ogumap.service.CompanyService;
+import com.example.ogumap.admin.dto.CompanyMemberDTO;
+import com.example.ogumap.admin.service.CompanyService;
 
 @Controller
 @RequestMapping("/admin/company")
@@ -45,7 +45,7 @@ public class AdminHomeCompanyController {
         return "admin/company/companylist";
     }
     
-    // 企業詳細表示（例：/admin/company/show/{companyId}）
+    // 企業詳細表示（/admin/company/show/{companyId}）
     @GetMapping("/show/{companyId}")
     public String showCompany(@PathVariable("companyId") Long companyId, Model model) {
         CompanyMemberDTO companyDetail = companyService.getCompanyDetail(companyId);

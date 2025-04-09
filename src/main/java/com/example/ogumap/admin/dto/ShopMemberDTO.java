@@ -1,4 +1,4 @@
-package com.example.ogumap.dto;
+package com.example.ogumap.admin.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

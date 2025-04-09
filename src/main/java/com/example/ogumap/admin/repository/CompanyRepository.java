@@ -1,4 +1,4 @@
-package com.example.ogumap.repository;
+package com.example.ogumap.admin.repository;
 
 import java.util.Optional;
 
@@ -10,17 +10,17 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.ogumap.dto.CompanyMemberDTO;
-import com.example.ogumap.entity.Company;
+import com.example.ogumap.admin.dto.CompanyMemberDTO;
+import com.example.ogumap.admin.entity.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
-    @Query("SELECT new com.example.ogumap.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
+    @Query("SELECT new com.example.ogumap.admin.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
            "FROM Company c JOIN c.member m")
     Page<CompanyMemberDTO> findAllCompanyMemberData(Pageable pageable); // ページネーション対応)
     
     // 検索クエリ対応メソッド
-    @Query("SELECT new com.example.ogumap.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
+    @Query("SELECT new com.example.ogumap.admin.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
            "FROM Company c JOIN c.member m " +
            "WHERE (:search2 IS NULL OR :search2 = '' OR " +
            "LOWER(c.companyName) LIKE LOWER(CONCAT('%', :search2, '%')) OR " + // 会社名で検索
@@ -29,7 +29,7 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
     Page<CompanyMemberDTO> findCompaniesBySearchQuery(@RequestParam("search2") String search2, Pageable pageable);
     
     // ショップ詳細取得用クエリ
-    @Query("SELECT new com.example.ogumap.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
+    @Query("SELECT new com.example.ogumap.admin.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
             "FROM Company c JOIN c.member m " +
             "WHERE c.id = :companyId")
      Optional<CompanyMemberDTO> findCompanyMemberDTOById(@Param("companyId") Long companyId);

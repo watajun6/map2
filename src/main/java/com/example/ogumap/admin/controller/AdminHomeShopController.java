@@ -1,4 +1,4 @@
-package com.example.ogumap.controller;
+package com.example.ogumap.admin.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.ogumap.dto.ShopMemberDTO;
-import com.example.ogumap.service.ShopService;
+import com.example.ogumap.admin.dto.ShopMemberDTO;
+import com.example.ogumap.admin.service.ShopService;
 
 @Controller
 @RequestMapping("/admin/shop")

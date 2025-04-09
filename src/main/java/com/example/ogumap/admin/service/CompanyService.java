@@ -1,11 +1,11 @@
-package com.example.ogumap.service;
+package com.example.ogumap.admin.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.example.ogumap.dto.CompanyMemberDTO;
-import com.example.ogumap.repository.CompanyRepository;
+import com.example.ogumap.admin.dto.CompanyMemberDTO;
+import com.example.ogumap.admin.repository.CompanyRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 

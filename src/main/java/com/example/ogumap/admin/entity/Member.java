@@ -1,4 +1,4 @@
-package com.example.ogumap.entity;
+package com.example.ogumap.admin.entity;
 
 import java.util.List;
 

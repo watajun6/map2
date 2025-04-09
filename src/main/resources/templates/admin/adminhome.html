@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>管理画面トップ</title>
+    
+    <th:block th:replace="~{fragment/fragment :: meta}"></th:block>
+    
+    <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mb-4 text-center">管理画面</h1>
+        <div class="list-group">
+            <!-- 企業一覧遷移へのリンク -->
+            <a th:href="@{/admin/company}" class="list-group-item list-group-item-action">企業一覧</a>
+            <!-- 店舗一覧遷移へのリンク -->
+            <a th:href="@{/admin/shop}" class="list-group-item list-group-item-action">店舗一覧</a>
+            <!-- 広告管理画面 -->
+        </div>
+    </div>
+    
+	<!-- フッター -->
+	<div th:replace="~{fragment/fragment :: footer}"></div>
+	</div>
+					 	
+	<!-- Bootstrap -->
+	<div th:replace="~{fragment/fragment :: scripts}"></div>
+</body>
+</html>
