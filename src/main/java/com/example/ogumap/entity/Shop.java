@@ -1,4 +1,4 @@
-package com.example.ogumap.admin.entity;
+package com.example.ogumap.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,28 +8,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "companies")
-public class Company {
-
+@Table(name = "shops")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String companyName;
+    private String shopName;
 
     @Column(nullable = false)
     private String address;
 
+    private String category1;
+    private String category2_1;
+    private String category2_2;
     private double latitude;
     private double longitude;
-    private String contactEmail;
     private String phoneNumber;
-
-//    private String website;
+    private String website;
 
     @ManyToOne
     @JoinColumn(name = "member_id", nullable = false)

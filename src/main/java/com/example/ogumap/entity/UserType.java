@@ -1,4 +1,4 @@
-package com.example.ogumap.admin.entity;
+package com.example.ogumap.entity;
 
 public enum UserType {
     ADMIN,

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.ogumap.admin.dto.CompanyMemberDTO;
-import com.example.ogumap.admin.entity.Company;
+import com.example.ogumap.entity.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {

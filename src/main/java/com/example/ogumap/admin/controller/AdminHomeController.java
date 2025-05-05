@@ -5,12 +5,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/adminhome")
+@RequestMapping("/admin")
 public class AdminHomeController {
 
+    /** 
+     * /admin へのアクセスは /admin/home にリダイレクト 
+     */
     @GetMapping
-    public String adminhome() {
-        // 管理画面トップ用のビュー (admin/adminhome.html) を返す
+    public String root() {
+        return "redirect:/admin/home";
+    }
+
+    /**
+     * /admin/home へのアクセスでテンプレート admin/adminhome.html を返す
+     */
+    @GetMapping("/home")
+    public String home() {
         return "admin/adminhome";
     }
 }

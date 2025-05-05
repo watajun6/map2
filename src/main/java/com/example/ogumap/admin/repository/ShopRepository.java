@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.ogumap.admin.dto.ShopMemberDTO;
-import com.example.ogumap.admin.entity.Shop;
+import com.example.ogumap.entity.Shop;
 
 @Repository
 public interface ShopRepository extends JpaRepository<Shop, Long> {
