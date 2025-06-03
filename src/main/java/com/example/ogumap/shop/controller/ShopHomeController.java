@@ -5,12 +5,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/shophome")
+@RequestMapping("/shop")
 public class ShopHomeController {
-
-    @GetMapping
-    public String shophome() {
-        // 管理画面トップ用のビュー (shophome.html) を返す
-        return "shop/shophome";
-    }
+	/** 
+	 * /shop へのアクセスは /shop/home にリダイレクト 
+	 */
+	@GetMapping
+	public String root() {
+	    return "redirect:/shop/home";
+	}
+	
+	/**
+	 * /shop/home へのアクセスでテンプレート shop/shophome.html を返す
+	 */
+	@GetMapping("/home")
+	public String home() {
+	    return "shop/shophome";
+	}
 }
