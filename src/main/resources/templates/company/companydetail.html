@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>会社情報詳細ページ</title>
+  
+    <th:block th:replace="~{fragment/fragment :: meta}"></th:block>
+    
+    <th:block th:replace="~{fragment/fragment :: styles}"></th:block>
+	<style>
+        .detail-section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .detail-section p {
+            margin: 10px 0;
+        }
+        .detail-section strong {
+            display: inline-block;
+            width: 150px;
+        }
+                a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+	</style>
+</head>
+<body>
+	<!-- ヘッダー -->
+	<div th:replace="~{fragment/fragment :: header}"></div>
+	
+	<main>
+		<div class="container pt-4 pb-5 container">
+		    <div class="row justify-content-center">
+		    	<div class="col-xxl-9 col-xl-10 col-lg-11">
+	
+	 <h1 class="mb-4 text-center">会社詳細情報</h1>
+	 
+	 <!-- 会員情報 
+	 <div class="detail-section">
+		 <h2>会員情報</h2>
+		 <p><strong>会員ID:</strong> <span th:text="${shopDetail.memberId}"></span></p>
+		 <p><strong>ユーザー名:</strong> <span th:text="${shopDetail.memberName}"></span></p>
+		 <p><strong>メールアドレス:</strong> <span th:text="${shopDetail.memberEmail}"></span></p>
+	 </div>　-->
+	 
+	 <!-- 店舗情報 -->
+	 <div class="detail-section">
+		<h2>会社情報</h2>
+		<p><strong>会社ID:</strong> <span th:text="${companyDetail.companyId}"></span></p>
+        <p><strong>会社名:</strong> <span th:text="${companyDetail.companyName}"></span></p>
+        <p><strong>住所:</strong> <span th:text="${companyDetail.address}"></span></p>
+        <p><strong>緯度:</strong> <span th:text="${companyDetail.latitude}"></span></p>
+        <p><strong>経度:</strong> <span th:text="${companyDetail.longitude}"></span></p>
+        <p><strong>メールアドレス:</strong> <span th:text="${companyDetail.contactEmail}"></span></p>
+        <p><strong>電話番号:</strong> <span th:text="${companyDetail.phoneNumber}"></span></p>
+	</div>
+	 
+	<!-- 戻るボタン -->
+	<div>
+		<a th:href="@{/company/companyhome}">管理画面へ戻る</a>
+	</div>
+	
+	</div>
+    </div>
+    </main>
+	
+	<!-- フッター -->
+    <div th:replace="~{fragment/fragment :: footer}"></div>
+    
+    <!-- Bootstrap -->
+    <div th:replace="~{fragment/fragment :: scripts}"></div>
+</body>
+</html>

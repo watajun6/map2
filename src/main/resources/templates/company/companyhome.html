@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>管理画面トップ</title>
+    <title>管理画面</title>
     
     <th:block th:replace="~{fragment/fragment :: meta}"></th:block>
     
@@ -12,9 +12,9 @@
         <h1 class="mb-4 text-center">管理画面</h1>
         <div class="list-group">
             <!-- 企業一覧遷移へのリンク -->
-            <a th:href="@{/admin/company}" class="list-group-item list-group-item-action">企業一覧</a>
+            <a th:href="@{/company/companydetail}" class="list-group-item list-group-item-action">登録情報</a>
             <!-- 店舗一覧遷移へのリンク -->
-            <a th:href="@{/admin/shop}" class="list-group-item list-group-item-action">店舗一覧</a>
+            <a th:href="@{/admin/shop}" class="list-group-item list-group-item-action">お問い合わせ</a>
             <!-- 広告管理画面 -->
         </div>
     </div>
