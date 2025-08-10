@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<head>
 		<title>部品化用のHTMLファイル</title> 
 		
@@ -27,10 +27,77 @@
 		<!-- ヘッダーの部品化 -->
 		<div th:fragment="header" th:remove="tag">
         	<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navbar">
-            	<div class="container-header">
+            	<div class="container">
                 	<a class="navbar-brand" th:href="@{/}">                        
                     	尾久マップ                    
-                   	</a>                                                                    
+                   	</a>        
+                   	
+                   	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">                                    
+                        <ul class="navbar-nav ms-auto">    
+                            <!-- 未ログインであれば表示する -->
+                            <li class="nav-item" sec:authorize="isAnonymous()">
+                                <a class="nav-link" th:href="@{/login}">ログイン</a>
+                            </li>           
+                                
+                            <!-- 管理者であれば表示する -->    
+                            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a id="navbarDropdownAdmin" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span sec:authentication="name"></span>
+                                </a>
+        
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="hasRole('ROLE_ADMIN')">                                                                                            
+                                    <a class="dropdown-item dropdown-item" th:href="@{/admin/home}">管理画面</a>                                                                                                     
+                                                              
+                                    <div class="dropdown-divider"></div>
+                                    
+                                    <a class="dropdown-item dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        ログアウト
+                                    </a>
+                                    <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form> 
+                                </div>
+                            </li>
+                            
+                            <!-- shopであれば表示する -->    
+                            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_SHOP')">
+                                <a id="navbarDropdownshop" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span sec:authentication="name"></span>
+                                </a>
+        
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="hasRole('ROLE_SHOP')">                                                                                            
+                                    <a class="dropdown-item dropdown-item" th:href="@{/shop/home}">管理画面</a>                                                                                                     
+                                                              
+                                    <div class="dropdown-divider"></div>
+                                    
+                                    <a class="dropdown-item dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        ログアウト
+                                    </a>
+                                    <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form> 
+                                </div>
+                            </li>
+                            
+                            <!-- companyであれば表示する -->    
+                            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_COMPANY')">
+                                <a id="navbarDropdownCompany" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span sec:authentication="name"></span>
+                                </a>
+        
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="hasRole('ROLE_COMPANY')">                                                                                            
+                                    <a class="dropdown-item dropdown-item" th:href="@{/company/companyhome}">管理画面</a>                                                                                                     
+                                                              
+                                    <div class="dropdown-divider"></div>
+                                    
+                                    <a class="dropdown-item dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        ログアウト
+                                    </a>
+                                    <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form> 
+                                </div>
+                            </li>                           
+                        </ul>       
+                    </div>                                                                    
                	</div>
            	</nav>
        	</div>
