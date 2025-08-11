@@ -45,18 +45,18 @@
     <!-- 会員情報 -->
     <div class="detail-section">
         <h2>会員情報</h2>
-        <p><strong>会員ID:</strong> <span th:text="${companyDetail.memberId}"></span></p>
-        <p><strong>ユーザー名:</strong> <span th:text="${companyDetail.memberName}"></span></p>
-        <p><strong>メールアドレス:</strong> <span th:text="${companyDetail.memberEmail}"></span></p>
+        <p><strong>会員ID:</strong> <span th:text="${companyDetail.id}"></span></p>
+        <p><strong>ユーザー名:</strong> <span th:text="${companyDetail.userName}"></span></p>
+        <p><strong>メールアドレス:</strong> <span th:text="${companyDetail.email}"></span></p>
     </div>
     
     <!-- 企業情報 -->
     <div class="detail-section">
         <h2>会社情報</h2>
-        <p><strong>ID:</strong> <span th:text="${companyDetail.companyId}"></span></p>
+        <p><strong>ID:</strong> <span th:text="${companyDetail.id}"></span></p>
         <p><strong>会社名:</strong> <span th:text="${companyDetail.companyName}"></span></p>
-        <p><strong>住所:</strong> <span th:text="${companyDetail.companyAddress}"></span></p>
-        <p><strong>連絡用メール:</strong> <span th:text="${companyDetail.contactEmail}"></span></p>
+        <p><strong>住所:</strong> <span th:text="${companyDetail.address}"></span></p>
+        <p><strong>連絡用メール:</strong> <span th:text="${companyDetail.email}"></span></p>
         <p><strong>電話番号:</strong> <span th:text="${companyDetail.phoneNumber}"></span></p>
         <p><strong>緯度:</strong> <span th:text="${companyDetail.latitude}"></span></p>
         <p><strong>経度:</strong> <span th:text="${companyDetail.longitude}"></span></p>

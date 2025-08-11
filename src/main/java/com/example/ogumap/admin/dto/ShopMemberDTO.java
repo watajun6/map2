@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ShopMemberDTO {
 	// Members テーブル
-    private Long memberId;       // ID
-    private String memberName;   // ユーザー名
-    private String memberEmail;  // メールアドレス
+    private Long id;       // ID
+    private String userName;   // ユーザー名
+    private String email;  // メールアドレス
 
     // Shops テーブル
     private Long shopId;         // 店舗ID
     private String shopName;     // 店舗名
-    private String shopAddress;  // 住所
+    private String address;  // 住所
     private String category1;    // カテゴリ1
     private String category2_1;  // カテゴリ2-1
     private String category2_2;  // カテゴリ2-2

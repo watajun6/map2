@@ -15,9 +15,10 @@ import com.example.ogumap.entity.Company;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Long> {
+	// ページネーション対応
     @Query("SELECT new com.example.ogumap.admin.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +
            "FROM Company c JOIN c.member m")
-    Page<CompanyMemberDTO> findAllCompanyMemberData(Pageable pageable); // ページネーション対応)
+    Page<CompanyMemberDTO> findAllCompanyMemberData(Pageable pageable); 
     
     // 検索クエリ対応メソッド
     @Query("SELECT new com.example.ogumap.admin.dto.CompanyMemberDTO(m.id, m.username, m.email, c.id, c.companyName, c.address, c.contactEmail, c.phoneNumber, c.latitude, c.longitude) " +

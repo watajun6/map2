@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CompanyMemberDTO {
 	// Members テーブル
-    private Long memberId;       // ID
-    private String memberName;   // ユーザー名
-    private String memberEmail;  // メールアドレス
+    private Long id;       // ID
+    private String userName;   // ユーザー名
+    private String email;  // メールアドレス
 //    private String memberRole;
 
     // companies テーブル
     private Long companyId;
     private String companyName;  // 会社名
-    private String companyAddress;  // 住所
+    private String address;  // 住所
     private String contactEmail;  // メールアドレス
     private String phoneNumber;  // 電話番号
     private Double latitude;     // 緯度

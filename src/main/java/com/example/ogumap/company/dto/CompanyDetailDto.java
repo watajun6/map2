@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CompanyDetailDto {
-    private Long memberId;       // ID
-    private String memberName;   // ユーザー名
-    private String memberEmail;  // メールアドレス
+    private Long id;       // ID
+    private String userName;   // ユーザー名
+    private String email;  // メールアドレス
     
     // companies テーブル
 	private Long companyId;			// 会社ID

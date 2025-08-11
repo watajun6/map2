@@ -41,9 +41,9 @@
 						<tbody>
 							<tr th:each="shop : ${shopsPage}">
 							    <td th:text="${shop.shopName}"></td>
-							    <td th:text="${shop.shopAddress}"></td>
+							    <td th:text="${shop.address}"></td>
 							    <td th:text="${shop.category1}"></td>
-							    <td><a th:href="@{'/admin/shop/show/' + ${shop.shopId}}">詳細</a></td> 
+							    <td><a th:href="@{'/admin/shop/show/' + ${shop.id}}">詳細</a></td> 
 							</tr>
 				           <!-- <tr th:each="shop : ${shopsPage}">
 				                <td th:text="${shop.memberId}"></td>
